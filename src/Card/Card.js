@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { css, jsx } from "@emotion/core";
+import { css, jsx } from '@emotion/core'
 
 function Card({ en, pinyin, zh }) {
   return (
@@ -8,7 +8,7 @@ function Card({ en, pinyin, zh }) {
       <div css={cssZh}>{zh}</div>
       <div css={cssPinyin}>{pinyin}</div>
     </div>
-  );
+  )
 }
 
 const cssCard = css`
@@ -20,18 +20,18 @@ const cssCard = css`
   &:not(:first-of-type) {
     margin-top: 0.5rem;
   }
-`;
+`
 const cssEn = css`
   text-align: center;
-`;
+`
 const cssZh = css`
   text-align: center;
   font-size: 1.5rem;
   font-weight: 500;
-`;
+`
 const cssPinyin = css`
   text-align: center;
   color: #a6a6a6;
-`;
+`
 
-export default Card;
+export default Card

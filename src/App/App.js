@@ -1,28 +1,34 @@
 /** @jsx jsx */
-import { css, jsx } from "@emotion/core";
-import Card from "../Card/Card";
-import dictionary from "../dictionary.json";
+import React from 'react'
+import { css, jsx } from '@emotion/core'
+import Test from '../Test/Test'
+import dictionary from '../dictionary.json'
 
 function App() {
+  const [step, setStep] = React.useState(0)
+  const next = () => setStep(step + 1)
+
   return (
     <div css={cssApp}>
       <header>
         <h1 css={cssHeader}>复习</h1>
       </header>
-      <div css={cssList}>
-        {dictionary.map((entry, i) => (
-          <Card key={i} {...entry} />
-        ))}
-      </div>
+      {step === 0 && (
+        <button css={cssStartButton} onClick={next}>
+          START
+        </button>
+      )}
+      {step === 1 && <Test dictionary={dictionary} onFinish={next} />}
+      {step === 2 && <div css={cssFinished}>Test completed :)</div>}
     </div>
-  );
+  )
 }
 
 const cssApp = css`
   display: flex;
   flex-direction: column;
   flex: 1;
-`;
+`
 const cssHeader = css`
   display: flex;
   flex: 0;
@@ -32,9 +38,33 @@ const cssHeader = css`
   background: #e8e8e8;
   color: #929292;
   height: 48px;
-`;
-const cssList = css`
+`
+const cssStartButton = css`
+  min-height: 5rem;
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
   padding: 0.5rem;
-`;
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: white;
+  background: indigo;
+  border: none;
+  outline: none;
+  box-shadow: none;
+`
+const cssFinished = css`
+  min-height: 5rem;
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  font-size: 1.5rem;
+  font-weight: 900;
+`
 
-export default App;
+export default App
