@@ -4,14 +4,27 @@ import { css, jsx } from '@emotion/core'
 import Test from '../Test/Test'
 import dictionary from '../dictionary.json'
 
+const STORAGE_STEP = 'fuxi-step'
+
 function App() {
-  const [step, setStep] = React.useState(0)
-  const next = () => setStep(step + 1)
+  const initialStep = sessionStorage.getItem(STORAGE_STEP) || 0
+  const [step, setStep] = React.useState(initialStep)
+  const next = () => {
+    const nextStep = step + 1
+    setStep(nextStep)
+    sessionStorage.setItem(STORAGE_STEP, nextStep)
+  }
+  const restart = () => {
+    setStep(0)
+    sessionStorage.removeItem(STORAGE_STEP)
+  }
 
   return (
     <div css={cssApp}>
       <header>
-        <h1 css={cssHeader}>复习</h1>
+        <h1 css={cssHeader} onClick={restart}>
+          复习
+        </h1>
       </header>
       {step === 0 && (
         <button css={cssStartButton} onClick={next}>
