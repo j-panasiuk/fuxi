@@ -5,9 +5,14 @@ import Test from '../Test/Test'
 import dictionary from '../dictionary.json'
 
 const STORAGE_STEP = 'fuxi-step'
+const STORAGE_CORRECT = 'fuxi-correct'
+const STORAGE_INCORRECT = 'fuxi-incorrect'
 
 function App() {
-  const initialStep = sessionStorage.getItem(STORAGE_STEP) || 0
+  const initialStep = Number(sessionStorage.getItem(STORAGE_STEP)) || 0
+  const correct = Number(sessionStorage.getItem(STORAGE_CORRECT)) || 0
+  const incorrect = Number(sessionStorage.getItem(STORAGE_INCORRECT)) || 0
+
   const [step, setStep] = React.useState(initialStep)
   const next = () => {
     const nextStep = step + 1
@@ -16,7 +21,7 @@ function App() {
   }
   const restart = () => {
     setStep(0)
-    sessionStorage.removeItem(STORAGE_STEP)
+    sessionStorage.clear()
   }
 
   return (
@@ -32,7 +37,14 @@ function App() {
         </button>
       )}
       {step === 1 && <Test dictionary={dictionary} onFinish={next} />}
-      {step === 2 && <div css={cssFinished}>Test completed :)</div>}
+      {step === 2 && (
+        <div css={cssFinished}>
+          <div>Test completed :)</div>
+          <h3>
+            {correct} / {correct + incorrect}
+          </h3>
+        </div>
+      )}
     </div>
   )
 }
@@ -71,7 +83,7 @@ const cssStartButton = css`
 const cssFinished = css`
   min-height: 5rem;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   flex: 1;
   align-items: center;
   justify-content: center;

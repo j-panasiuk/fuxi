@@ -3,6 +3,9 @@ import React from 'react'
 import { css, jsx } from '@emotion/core'
 import Card from '../Card/Card'
 
+const STORAGE_CORRECT = 'fuxi-correct'
+const STORAGE_INCORRECT = 'fuxi-incorrect'
+
 function Test({ dictionary, onFinish }) {
   const [currentQuestion, setCurrentQuestion] = React.useState(dictionary.shift())
   const [remainingQuestions, setRemainingQuestions] = React.useState(dictionary)
@@ -18,14 +21,26 @@ function Test({ dictionary, onFinish }) {
     }
   }
 
+  const answer = correct => {
+    if (correct === true) {
+      const correctSoFar = sessionStorage.getItem(STORAGE_CORRECT) || 0
+      sessionStorage.setItem(STORAGE_CORRECT, Number(correctSoFar) + 1)
+    } else {
+      const incorrectSoFar = sessionStorage.getItem(STORAGE_INCORRECT) || 0
+      sessionStorage.setItem(STORAGE_INCORRECT, Number(incorrectSoFar) + 1)
+    }
+
+    nextQuestion()
+  }
+
   return (
     <div css={cssList}>
       <Card {...currentQuestion} />
       <div css={cssActions}>
-        <button css={cssButton} onClick={nextQuestion}>
+        <button css={cssButton} onClick={() => answer(true)}>
           Correct
         </button>
-        <button css={cssButton} onClick={nextQuestion}>
+        <button css={cssButton} onClick={() => answer(false)}>
           Incorrect
         </button>
       </div>
