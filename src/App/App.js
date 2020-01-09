@@ -2,6 +2,7 @@
 import React from 'react'
 import { css, jsx } from '@emotion/core'
 import Test from '../Test/Test'
+import { buttonStyle } from '../Button/Button'
 import dictionary from '../dictionary.json'
 
 const STORAGE_STEP = 'fuxi-step'
@@ -65,20 +66,9 @@ const cssHeader = css`
   height: 48px;
 `
 const cssStartButton = css`
-  min-height: 5rem;
-  display: flex;
-  flex-direction: row;
-  flex: 1;
-  align-items: center;
-  justify-content: center;
-  padding: 0.5rem;
-  font-size: 1.5rem;
-  font-weight: 900;
-  color: white;
+  ${buttonStyle};
   background: indigo;
-  border: none;
-  outline: none;
-  box-shadow: none;
+  color: white;
 `
 const cssFinished = css`
   min-height: 5rem;

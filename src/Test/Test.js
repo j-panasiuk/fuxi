@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import React from 'react'
 import { css, jsx } from '@emotion/core'
-import Card from '../Card/Card'
+import { QuestionCard, AnswerCard } from '../Card/Card'
 
 const STORAGE_CORRECT = 'fuxi-correct'
 const STORAGE_INCORRECT = 'fuxi-incorrect'
@@ -9,9 +9,11 @@ const STORAGE_INCORRECT = 'fuxi-incorrect'
 function Test({ dictionary, onFinish }) {
   const [currentQuestion, setCurrentQuestion] = React.useState(dictionary.shift())
   const [remainingQuestions, setRemainingQuestions] = React.useState(dictionary)
+  const [hasRevealedAnswer, setHasRevealedAnswer] = React.useState(false)
   const hasMoreQuestions = remainingQuestions.length > 0
 
   const nextQuestion = () => {
+    setHasRevealedAnswer(false)
     if (hasMoreQuestions) {
       const next = remainingQuestions.shift()
       setCurrentQuestion(next)
@@ -19,6 +21,10 @@ function Test({ dictionary, onFinish }) {
     } else {
       onFinish()
     }
+  }
+
+  const reveal = () => {
+    setHasRevealedAnswer(true)
   }
 
   const answer = correct => {
@@ -35,44 +41,17 @@ function Test({ dictionary, onFinish }) {
 
   return (
     <div css={cssList}>
-      <Card {...currentQuestion} />
-      <div css={cssActions}>
-        <button css={cssButton} onClick={() => answer(true)}>
-          Correct
-        </button>
-        <button css={cssButton} onClick={() => answer(false)}>
-          Incorrect
-        </button>
-      </div>
+      {hasRevealedAnswer ? (
+        <AnswerCard entry={currentQuestion} onAnswer={answer} />
+      ) : (
+        <QuestionCard entry={currentQuestion} onReveal={reveal} />
+      )}
     </div>
   )
 }
 
 const cssList = css`
   padding: 0.5rem;
-`
-const cssActions = css`
-  margin-top: 0.5rem;
-  display: flex;
-  flex-direction: row;
-`
-const cssButton = css`
-  display: flex;
-  flex: 1;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  min-height: 3rem;
-  font-size: 1rem;
-  font-weight: 900;
-  color: white;
-  background: lightgrey;
-  border: none;
-  outline: none;
-  box-shadow: none;
-  &:not(:first-of-type) {
-    margin-left: 0.5rem;
-  }
 `
 
 export default Test
