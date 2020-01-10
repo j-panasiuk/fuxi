@@ -1,52 +1,28 @@
 /** @jsx jsx */
-import React from 'react'
+import { BrowserRouter, Switch, Route, Link } from 'react-router-dom'
 import { css, jsx } from '@emotion/core'
-import Test from '../Test/Test'
-import { buttonStyle } from '../Button/Button'
-import dictionary from '../dictionary.json'
+import { Test } from '../Test/Test'
+import { Vocabulary } from '../Vocabulary/Vocabulary'
 
-const STORAGE_STEP = 'fuxi-step'
-const STORAGE_CORRECT = 'fuxi-correct'
-const STORAGE_INCORRECT = 'fuxi-incorrect'
-
-function App() {
-  const initialStep = Number(sessionStorage.getItem(STORAGE_STEP)) || 0
-  const correct = Number(sessionStorage.getItem(STORAGE_CORRECT)) || 0
-  const incorrect = Number(sessionStorage.getItem(STORAGE_INCORRECT)) || 0
-
-  const [step, setStep] = React.useState(initialStep)
-  const next = () => {
-    const nextStep = step + 1
-    setStep(nextStep)
-    sessionStorage.setItem(STORAGE_STEP, nextStep)
-  }
-  const restart = () => {
-    setStep(0)
-    sessionStorage.clear()
-  }
-
+export function App() {
   return (
-    <div css={cssApp}>
-      <header>
-        <h1 css={cssHeader} onClick={restart}>
-          复习
-        </h1>
-      </header>
-      {step === 0 && (
-        <button css={cssStartButton} onClick={next}>
-          START
-        </button>
-      )}
-      {step === 1 && <Test dictionary={dictionary} onFinish={next} />}
-      {step === 2 && (
-        <div css={cssFinished}>
-          <div>Test completed :)</div>
-          <h3>
-            {correct} / {correct + incorrect}
-          </h3>
-        </div>
-      )}
-    </div>
+    <BrowserRouter>
+      <div css={cssApp}>
+        <header>
+          <Link to="/">
+            <h1 css={cssHeader}>复习</h1>
+          </Link>
+        </header>
+        <Switch>
+          <Route path="/">
+            <Test />
+          </Route>
+          <Route path="/vocabulary">
+            <Vocabulary />
+          </Route>
+        </Switch>
+      </div>
+    </BrowserRouter>
   )
 }
 
@@ -65,21 +41,3 @@ const cssHeader = css`
   color: #929292;
   height: 48px;
 `
-const cssStartButton = css`
-  ${buttonStyle};
-  background: indigo;
-  color: white;
-`
-const cssFinished = css`
-  min-height: 5rem;
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  align-items: center;
-  justify-content: center;
-  padding: 0.5rem;
-  font-size: 1.5rem;
-  font-weight: 900;
-`
-
-export default App

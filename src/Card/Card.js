@@ -67,6 +67,7 @@ const cssPinyin = css`
 const cssActions = css`
   display: flex;
   flex-direction: row;
+  width: 100%;
 `
 const cssButton = css`
   ${buttonStyle};
