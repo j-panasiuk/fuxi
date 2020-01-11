@@ -1,18 +1,13 @@
 /** @jsx jsx */
-import React from 'react'
 import { css, jsx } from '@emotion/core'
 import { QuestionCard, AnswerCard } from '../Card/Card'
 import { buttonStyle } from '../Button/Button'
 import { createTest } from '../../Tests/createTest'
-
-let cache = {
-  history: [],
-  testSettings: {},
-  test: null,
-}
+import { useLocalStorage } from '../../Storage/useLocalStorage'
 
 export function Test() {
-  const [test, setTest] = React.useState(cache.test)
+  const [testHistory, setTestHistory] = useLocalStorage('fuxi-testHistory', [])
+  const [test, setTest] = useLocalStorage('fuxi-test', null)
 
   const start = () => {
     setTest(createTest())
@@ -34,12 +29,14 @@ export function Test() {
   }
   const finish = persist => {
     if (persist === true) {
-      cache.history.push({
-        date: new Date().getTime(),
-        answers: test.answers,
-      })
+      setTestHistory([
+        ...testHistory,
+        {
+          date: new Date().getTime(),
+          answers: test.answers,
+        },
+      ])
     }
-    cache.test = null
     setTest(null)
   }
 
