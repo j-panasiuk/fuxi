@@ -1,8 +1,9 @@
 /** @jsx jsx */
 import { BrowserRouter, Switch, Route, Link } from 'react-router-dom'
 import { css, jsx } from '@emotion/core'
-import { Test } from '../Test/Test'
-import { Vocabulary } from '../Vocabulary/Vocabulary'
+import { Dashboard } from './Dashboard/Dashboard'
+import { Test } from './Test/Test'
+import { Vocabulary } from './Vocabulary/Vocabulary'
 
 export function App() {
   return (
@@ -14,11 +15,14 @@ export function App() {
           </Link>
         </header>
         <Switch>
-          <Route path="/">
+          <Route path="/test">
             <Test />
           </Route>
           <Route path="/vocabulary">
             <Vocabulary />
+          </Route>
+          <Route>
+            <Dashboard />
           </Route>
         </Switch>
       </div>

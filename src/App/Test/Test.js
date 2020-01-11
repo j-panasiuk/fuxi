@@ -1,23 +1,14 @@
 /** @jsx jsx */
 import React from 'react'
 import { css, jsx } from '@emotion/core'
-import sampleSize from 'lodash/sampleSize'
 import { QuestionCard, AnswerCard } from '../Card/Card'
 import { buttonStyle } from '../Button/Button'
-import dictionary from '../dictionary.json'
+import { createTest } from '../../Tests/createTest'
 
 let cache = {
   history: [],
   testSettings: {},
   test: null,
-}
-
-function createTest() {
-  return {
-    questions: sampleSize(dictionary, 10),
-    answers: [],
-    isRevealingAnswer: false,
-  }
 }
 
 export function Test() {
