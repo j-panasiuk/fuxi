@@ -12,11 +12,9 @@ export function Dashboard() {
   return (
     <div>
       <h1>Dashboard</h1>
-      {test && (
-        <Link to="/test" css={cssContinueButton}>
-          Continue
-        </Link>
-      )}
+      <Link to="/test" css={cssContinueButton}>
+        {test ? 'Continue' : 'New Test'}
+      </Link>
       {testHistory && testHistory.length > 0 && (
         <React.Fragment>
           <p>Your pathetic results so far:</p>
