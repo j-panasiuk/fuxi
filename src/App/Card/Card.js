@@ -56,6 +56,7 @@ const cssCard = css`
   justify-content: center;
   padding: 0.5rem;
   min-height: 8rem;
+  white-space: pre-line;
   background: #efefef;
   &:not(:first-of-type) {
     margin-top: 0.5rem;
