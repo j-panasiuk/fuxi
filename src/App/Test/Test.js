@@ -51,11 +51,13 @@ export function Test() {
 
   if (test.questions.length > 0) {
     // Test in progress. Display current question.
-    const currentQuestion = test.questions[0]
+    const [current, ...remaining] = test.questions
+    const currentStep = test.answers.length + 1
+    const totalSteps = currentStep + remaining.length
     return test.isRevealingAnswer ? (
-      <AnswerCard entry={currentQuestion} onAnswer={answer} />
+      <AnswerCard entry={current} onAnswer={answer} stepRenderer={`${currentStep} / ${totalSteps}`} />
     ) : (
-      <QuestionCard entry={currentQuestion} onReveal={reveal} />
+      <QuestionCard entry={current} onReveal={reveal} stepRenderer={`${currentStep} / ${totalSteps}`} />
     )
   }
 

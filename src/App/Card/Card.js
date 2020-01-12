@@ -3,10 +3,11 @@ import React from 'react'
 import { css, jsx } from '@emotion/core'
 import { buttonStyle } from '../Button/Button'
 
-export function QuestionCard({ entry, onReveal }) {
+export function QuestionCard({ entry, onReveal, stepRenderer }) {
   return (
     <React.Fragment>
       <div css={cssCard}>
+        <div css={cssStep}>{stepRenderer}</div>
         <div css={cssEn}>{entry.en}</div>
       </div>
       <div css={cssActions}>
@@ -18,10 +19,11 @@ export function QuestionCard({ entry, onReveal }) {
   )
 }
 
-export function AnswerCard({ entry, onAnswer }) {
+export function AnswerCard({ entry, onAnswer, stepRenderer }) {
   return (
     <React.Fragment>
       <div css={cssCard}>
+        <div css={cssStep}>{stepRenderer}</div>
         <div css={cssEn}>{entry.en}</div>
         <div css={cssZh}>{entry.zh}</div>
         <div css={cssPinyin}>{entry.pinyin}</div>
@@ -38,7 +40,15 @@ export function AnswerCard({ entry, onAnswer }) {
   )
 }
 
+const cssStep = css`
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0.5rem;
+  color: #a6a6a6;
+`
 const cssCard = css`
+  position: relative;
   display: flex;
   flex-direction: column;
   flex: 1;
