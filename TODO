@@ -1,0 +1,29 @@
+# TODO
+
+- use test settings
+    - show settings on test start page
+    - store settings in localStorage
+    - use settings when generating new test
+
+- improve dashboard
+    - display test statistics based on (recent?) history
+
+- smart questions generation
+    - less frequently used - more often
+    - less correctly guessed - more often
+
+- improve styles
+    - proper layout
+    - fonts, typography
+    - colors
+    - animations
+
+- properly display pinyin
+- create input component for typing pinyin
+
+- split dictionary into sources (HSK, MC, YY...)
+- add serviceWorker for caching dictionaries
+
+- vocabulary panel for crud operations on dictionaries and entries
+    - save results in json file on disk (server)
+    - (maybe) save results in db on server
