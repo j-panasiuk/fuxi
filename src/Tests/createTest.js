@@ -1,9 +1,14 @@
 import sampleSize from 'lodash/sampleSize'
 import dictionary from '../dictionary.json'
 
-export function createTest() {
+const defaultSettings = {
+  steps: 12,
+}
+
+export function createTest(customSettings = {}) {
+  const settings = { ...defaultSettings, ...customSettings }
   return {
-    questions: sampleSize(dictionary, 10),
+    questions: sampleSize(dictionary, settings.steps),
     answers: [],
     isRevealingAnswer: false,
   }

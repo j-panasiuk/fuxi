@@ -8,9 +8,10 @@ import { useLocalStorage } from '../../Storage/useLocalStorage'
 export function Test() {
   const [testHistory, setTestHistory] = useLocalStorage('fuxi-testHistory', [])
   const [test, setTest] = useLocalStorage('fuxi-test', null)
+  const [testSettings, setTestSettings] = useLocalStorage('fuxi-testSettings', {})
 
   const start = () => {
-    setTest(createTest())
+    setTest(createTest(testSettings))
   }
   const reveal = () => {
     setTest({

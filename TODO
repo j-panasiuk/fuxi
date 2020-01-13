@@ -17,6 +17,7 @@
     - fonts, typography
     - colors
     - animations
+    - add logo, favicon, title
 
 - properly display pinyin
 - create input component for typing pinyin
