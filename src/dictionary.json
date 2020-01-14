@@ -223,5 +223,30 @@
         "en": "mission; task; assignment",
         "pinyin": "ren4wu",
         "zh": "任务"
+    },
+    {
+        "en": "I don't know most of the people here.",
+        "pinyin": "zhelide da4bu4fen4de ren wo dou bu ren4shi",
+        "zh": "这里大部分的人我都不认识。"
+    },
+    {
+        "en": "He ate most of the meal.",
+        "pinyin": "ta ba da4bu4fen4de fan4 dou chi le",
+        "zh": "他把大部分的饭都吃了。"
+    },
+    {
+        "en": "Spring Festival",
+        "pinyin": "chun1 jie2",
+        "zh": "春节"
+    },
+    {
+        "en": "create; produce",
+        "pinyin": "chuang4 zao4",
+        "zh": "创造"
+    },
+    {
+        "en": "1. habit; custom; usual practice\n2. study; learn",
+        "pinyin": "xi2",
+        "zh": "习"
     }
 ]
