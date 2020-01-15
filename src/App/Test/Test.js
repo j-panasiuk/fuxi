@@ -4,6 +4,7 @@ import { QuestionCard, AnswerCard } from '../Card/Card'
 import { buttonStyle } from '../Button/Button'
 import { createTest } from '../../Tests/createTest'
 import { useLocalStorage } from '../../Storage/useLocalStorage'
+import { colors } from '../../styles/colors'
 
 export function Test() {
   const [testHistory, setTestHistory] = useLocalStorage('fuxi-testHistory', [])
@@ -86,8 +87,13 @@ export function Test() {
 
 const cssStartButton = css`
   ${buttonStyle};
-  background: indigo;
-  color: white;
+  background: ${colors.primary};
+  color: ${colors.white};
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
 `
 const cssFinished = css`
   min-height: 5rem;

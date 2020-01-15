@@ -4,9 +4,10 @@ export const buttonStyle = `
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  min-height: 3rem;
-  font-size: 1rem;
-  font-weight: 900;
+  min-height: 5rem;
+  font-size: 1.25rem;
+  font-weight: 400;
+  text-transform: uppercase;
   color: white;
   background: grey;
   border: none;
