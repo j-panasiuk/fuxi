@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core'
-import { QuestionCard, AnswerCard } from '../Card/Card'
+import { Card } from '../Card/Card'
 import { buttonStyle } from '../Button/Button'
 import { createTest } from '../../Tests/createTest'
 import { useLocalStorage } from '../../Storage/useLocalStorage'
@@ -56,10 +56,18 @@ export function Test() {
     const [current, ...remaining] = test.questions
     const currentStep = test.answers.length + 1
     const totalSteps = currentStep + remaining.length
-    return test.isRevealingAnswer ? (
-      <AnswerCard entry={current} onAnswer={answer} stepRenderer={`${currentStep} / ${totalSteps}`} />
-    ) : (
-      <QuestionCard entry={current} onReveal={reveal} stepRenderer={`${currentStep} / ${totalSteps}`} />
+    const stepCounter = `${currentStep} / ${totalSteps}`
+
+    return (
+      <div css={cssContent}>
+        <Card
+          entry={current}
+          isRevealed={test.isRevealingAnswer}
+          onAnswer={answer}
+          onReveal={reveal}
+          stepRenderer={stepCounter}
+        />
+      </div>
     )
   }
 
@@ -94,6 +102,11 @@ const cssStartButton = css`
   bottom: 0;
   right: 0;
   width: 100%;
+`
+const cssContent = css`
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 3rem);
 `
 const cssFinished = css`
   min-height: 5rem;

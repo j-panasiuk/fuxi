@@ -14,6 +14,6 @@ export const buttonStyle = `
   outline: none;
   box-shadow: none;
   &:not(:first-of-type) {
-    margin-left: 0.5rem;
+    margin-left: 1px;
   }
 `
