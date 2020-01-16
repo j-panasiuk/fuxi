@@ -32,4 +32,7 @@ const cssApp = css`
   flex-direction: column;
   flex: 1;
   margin-top: 3rem;
+  min-height: 100vh;
+  background: #444;
+  color: white;
 `

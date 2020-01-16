@@ -11,9 +11,10 @@ export function Dashboard() {
   const [test] = useLocalStorage('fuxi-test', null)
 
   return (
-    <div>
+    <div css={cssDashboard}>
       {testHistory && testHistory.length > 0 ? (
         <React.Fragment>
+          <h3>Welcome!</h3>
           <p>Your pathetic results so far:</p>
           <ul>
             {testHistory.map(th => (
@@ -31,6 +32,9 @@ export function Dashboard() {
   )
 }
 
+const cssDashboard = css`
+  padding: 0.5rem;
+`
 const cssContinueButton = css`
   ${buttonStyle};
   background: ${colors.primary};

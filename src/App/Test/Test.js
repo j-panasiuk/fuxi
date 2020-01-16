@@ -45,9 +45,15 @@ export function Test() {
   if (!test) {
     // No test in progress. Create new one.
     return (
-      <button css={cssStartButton} onClick={start}>
-        START
-      </button>
+      <div css={cssContainer}>
+        <div css={cssContent}>
+          <h3>Settings</h3>
+          <p>Test length: {12 /** TODO read from storage */}</p>
+        </div>
+        <button css={cssStartButton} onClick={start}>
+          START
+        </button>
+      </div>
     )
   }
 
@@ -59,7 +65,7 @@ export function Test() {
     const stepCounter = `${currentStep} / ${totalSteps}`
 
     return (
-      <div css={cssContent}>
+      <div css={cssContainer}>
         <Card
           entry={current}
           isRevealed={test.isRevealingAnswer}
@@ -75,12 +81,15 @@ export function Test() {
   // Count and display results.
   const correct = test.answers.filter(ans => ans.correct === true).length
   const incorrect = test.answers.filter(ans => ans.correct === false).length
+
   return (
-    <div css={cssFinished}>
-      <div>Test completed :)</div>
-      <h3>
-        {correct} / {correct + incorrect}
-      </h3>
+    <div css={cssContainer}>
+      <div css={cssContent}>
+        <h3>Test completed :)</h3>
+        <h3>
+          {correct} / {correct + incorrect}
+        </h3>
+      </div>
       <div css={cssActions}>
         <button css={cssButton} onClick={() => finish(true)}>
           Save
@@ -103,20 +112,14 @@ const cssStartButton = css`
   right: 0;
   width: 100%;
 `
-const cssContent = css`
+const cssContainer = css`
   display: flex;
   flex-direction: column;
   height: calc(100vh - 3rem);
 `
-const cssFinished = css`
-  min-height: 5rem;
-  display: flex;
-  flex-direction: column;
+const cssContent = css`
   flex: 1;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.5rem;
-  font-weight: 900;
+  padding: 0.5rem;
 `
 const cssActions = css`
   display: flex;
