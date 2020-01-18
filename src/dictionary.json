@@ -252,46 +252,55 @@
     {
         "en": "Where did uou go?",
         "pinyin": "ni qu nali le?",
-        "zh": "你去哪里了？"
+        "zh": "你去哪里了？",
+        "meta": "YY/IC/11/1"
     },
     {
         "en": "I went to buy Strawberry phone",
         "pinyin": "wo qu mai cao3mei2 shou3ji1 le",
-        "zh": "我去买草莓手机了"
+        "zh": "我去买草莓手机了",
+        "meta": "YY/IC/11/1"
     },
     {
         "en": "Did you buy it?",
         "pinyin": "ni mai3dao4 le ma?",
-        "zh": "你买到了吗？"
+        "zh": "你买到了吗？",
+        "meta": "YY/IC/11/1"
     },
     {
         "en": "Yes, I got it.",
         "pinyin": "mai3dao4 le",
-        "zh": "买到了"
+        "zh": "买到了",
+        "meta": "YY/IC/11/1"
     },
     {
         "en": "No, didn't get it.",
         "pinyin": "wo mei2 mai3dao4",
-        "zh": "我没买到"
+        "zh": "我没买到",
+        "meta": "YY/IC/11/1"
     },
     {
         "en": "Did you finish talking?",
         "pinyin": "ni shuowan2 le ma?",
-        "zh": "你说完了吗？"
+        "zh": "你说完了吗？",
+        "meta": "YY/IC/11/2"
     },
     {
         "en": "I finished reading this book.",
         "pinyin": "wo kan4wan2 zheben3 shu3",
-        "zh": "我看完这本书了"
+        "zh": "我看完这本书了",
+        "meta": "YY/IC/11/2"
     },
     {
         "en": "Sorry, it's sold out.",
         "pinyin": "dui4buqi3, mai4wan2 le",
-        "zh": "对不起，卖完了"
+        "zh": "对不起，卖完了",
+        "meta": "YY/IC/11/2"
     },
     {
         "en": "I finished my homework.",
         "pinyin": "wo zuo4wan2 gong1ke4 le",
-        "zh": "我做完功课了"
+        "zh": "我做完功课了",
+        "meta": "YY/IC/11/2"
     }
 ]
