@@ -21,6 +21,8 @@ export function Dashboard() {
               <li key={th.date}>{th.answers.length} questions answered</li>
             ))}
           </ul>
+          <p>Your average score:</p>
+          <h1>{testsAverageResult(testHistory)}%</h1>
         </React.Fragment>
       ) : (
         <p>No finished tests yet.</p>
@@ -45,3 +47,9 @@ const cssContinueButton = css`
   bottom: 0;
   right: 0;
 `
+
+function testsAverageResult(testHistory = []) {
+  const answers = testHistory.flatMap(t => t.answers)
+  const correctAnswers = answers.filter(a => a.correct)
+  return (100 * (correctAnswers.length / answers.length)).toFixed(2)
+}
