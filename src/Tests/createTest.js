@@ -1,7 +1,7 @@
 import sampleSize from 'lodash/sampleSize'
 import dictionary from '../dictionary.json'
 
-const defaultSettings = {
+export const defaultSettings = {
   steps: 12,
 }
 

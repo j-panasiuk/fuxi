@@ -3,11 +3,14 @@ import React from 'react'
 import { css, jsx } from '@emotion/core'
 import { buttonStyle } from '../Button/Button'
 
-export function Card({ entry, isRevealed, onReveal, onAnswer, stepRenderer }) {
+export function Card({ entry, isRevealed, onReveal, onAnswer, onDiscard, stepRenderer }) {
   return (
     <React.Fragment>
       <div css={cssCard}>
         <div css={cssStep}>{stepRenderer}</div>
+        <div css={cssExit} onClick={onDiscard}>
+          ✗
+        </div>
         <div css={cssQuestion}>
           <div css={cssEn}>{entry.en}</div>
         </div>
@@ -43,9 +46,22 @@ export function Card({ entry, isRevealed, onReveal, onAnswer, stepRenderer }) {
 const cssStep = css`
   position: absolute;
   top: 0;
+  left: 0;
+  padding: 0.5rem;
+  color: #999;
+`
+const cssExit = css`
+  position: absolute;
+  top: 0;
   right: 0;
   padding: 0.5rem;
   color: #999;
+  font-size: 1.5rem;
+  font-weight: 200;
+  cursor: default;
+  &:hover {
+    color: #444;
+  }
 `
 const cssCard = css`
   position: relative;

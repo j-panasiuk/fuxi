@@ -2,14 +2,14 @@
 import { css, jsx } from '@emotion/core'
 import { Card } from '../Card/Card'
 import { buttonStyle } from '../Button/Button'
-import { createTest } from '../../Tests/createTest'
+import { createTest, defaultSettings } from '../../Tests/createTest'
 import { useLocalStorage } from '../../Storage/useLocalStorage'
 import { colors } from '../../styles/colors'
 
 export function Test() {
   const [testHistory, setTestHistory] = useLocalStorage('fuxi-testHistory', [])
   const [test, setTest] = useLocalStorage('fuxi-test', null)
-  const [testSettings, setTestSettings] = useLocalStorage('fuxi-testSettings', {})
+  const [testSettings, setTestSettings] = useLocalStorage('fuxi-testSettings', defaultSettings)
 
   const start = () => {
     setTest(createTest(testSettings))
@@ -28,6 +28,9 @@ export function Test() {
       answers: [...test.answers, { ...current, correct }],
       isRevealingAnswer: false,
     })
+  }
+  const discard = () => {
+    setTest(null)
   }
   const finish = persist => {
     if (persist === true) {
@@ -48,7 +51,7 @@ export function Test() {
       <div css={cssContainer}>
         <div css={cssContent}>
           <h3>Settings</h3>
-          <p>Test length: {12 /** TODO read from storage */}</p>
+          <p>Test length: {testSettings.steps}</p>
         </div>
         <button css={cssStartButton} onClick={start}>
           START
@@ -71,6 +74,7 @@ export function Test() {
           isRevealed={test.isRevealingAnswer}
           onAnswer={answer}
           onReveal={reveal}
+          onDiscard={discard}
           stepRenderer={stepCounter}
         />
       </div>
